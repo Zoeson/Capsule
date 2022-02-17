@@ -3,7 +3,8 @@
 
 from keras import activations
 from keras import backend as K
-from keras.engine.topology import Layer
+# from keras.engine.topology import Layer
+from keras.layers import Layer
 
 def squash(x, axis=-1):
     s_squared_norm = K.sum(K.square(x), axis, keepdims=True) + K.epsilon()

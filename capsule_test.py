@@ -6,6 +6,7 @@ from keras.datasets import mnist
 from keras.models import Model
 from keras.layers import *
 from keras import backend as K
+import numpy as np
 
 
 #准备训练数据
@@ -66,9 +67,9 @@ Y_pred = Y_pred.argsort()[:,-2:] #取最高分数的两个类别
 Y_pred.sort(axis=1) #排序，因为只比较集合
 
 acc = 1.*(np.prod(Y_pred == Y_test, axis=1)).sum()/len(X_test)
-print u'CNN+Pooling，不考虑置信度的准确率为：%s'%acc
+print(u'CNN+Pooling，不考虑置信度的准确率为：%s'%acc)
 acc = 1.*(np.prod(Y_pred == Y_test, axis=1)*greater).sum()/len(X_test)
-print u'CNN+Pooling，考虑置信度的准确率为：%s'%acc
+print(u'CNN+Pooling，考虑置信度的准确率为：%s'%acc)
 
 
 
@@ -102,6 +103,6 @@ Y_pred = Y_pred.argsort()[:,-2:] #取最高分数的两个类别
 Y_pred.sort(axis=1) #排序，因为只比较集合
 
 acc = 1.*(np.prod(Y_pred == Y_test, axis=1)).sum()/len(X_test)
-print u'CNN+Capsule，不考虑置信度的准确率为：%s'%acc
+print(u'CNN+Capsule，不考虑置信度的准确率为：%s' % acc)
 acc = 1.*(np.prod(Y_pred == Y_test, axis=1)*greater).sum()/len(X_test)
-print u'CNN+Capsule，考虑置信度的准确率为：%s'%acc
+print(u'CNN+Capsule，考虑置信度的准确率为：%s' % acc)
