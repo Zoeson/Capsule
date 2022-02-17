@@ -8,7 +8,6 @@ from keras.layers import *
 from keras import backend as K
 import numpy as np
 
-
 #准备训练数据
 batch_size = 128
 num_classes = 10
@@ -28,7 +27,8 @@ y_test = utils.to_categorical(y_test, num_classes)
 
 #准备自定义的测试样本
 #对测试集重新排序并拼接到原来测试集，就构成了新的测试集，每张图片有两个不同数字
-idx = range(len(x_test))
+# idx = range(len(x_test))
+idx = list(range(len(x_test)))
 np.random.shuffle(idx)
 X_test = np.concatenate([x_test, x_test[idx]], 1)
 Y_test = np.vstack([y_test.argmax(1), y_test[idx].argmax(1)]).T
